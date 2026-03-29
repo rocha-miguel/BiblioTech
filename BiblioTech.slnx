@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BiblioTech.API/BiblioTech.API.csproj" />
+  <Project Path="BiblioTech.Domain/BiblioTech.Domain.csproj" />
+  <Project Path="BiblioTech.Infra.Data/BiblioTech.Infra.Data.csproj" />
+</Solution>
