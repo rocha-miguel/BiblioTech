@@ -23,6 +23,8 @@ namespace BiblioTech.Domain.Entities {
 
         public GeneroLivro GeneroLivro { get; set; }
 
+        public Status Status { get; set; }
+
         public DateTime DataHoraCadastro { get; set; } = DateTime.Now;
 
     }

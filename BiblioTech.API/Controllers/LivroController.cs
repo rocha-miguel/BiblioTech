@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BiblioTech.API.Models;
+using BiblioTech.API.Services;
+using BiblioTech.Infra.Data.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BiblioTech.API.Controllers {
@@ -6,39 +9,98 @@ namespace BiblioTech.API.Controllers {
     [ApiController]
     public class LivroController : ControllerBase {
 
+        private readonly LivroService _livroService;
+
+        public LivroController(LivroService livroService) {
+            _livroService = livroService;
+        }
+
         [HttpPost]
-        public IActionResult Criar() {
+        public IActionResult Criar([FromBody] DadosLivroRequest dadosLivroRequest) {
 
+            try {
 
-            return Ok();
+                _livroService.CriarLivro(dadosLivroRequest);
+
+                return Ok();
+
+            } catch (ApplicationException e) {
+
+                return BadRequest(e.Message);
+            }
+
         }
 
-        [HttpPut]
-        public IActionResult Atualizar() {
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(Guid id, [FromBody] DadosLivroRequest dadosLivroRequest) {
 
+            try {
 
-            return Ok();
+                _livroService.AtualizarLivro(id, dadosLivroRequest);
+
+                return Ok();
+
+            } catch (ApplicationException e) {
+
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet]
-        public IActionResult Listar() {
+        public IActionResult ListarResumido() {
 
+            try {
 
-            return Ok();
+                var livros = _livroService.ListarResumido();
+
+                var resultado = livros.Select(l => new {
+                    l.Id,
+                    l.Nome,
+                    l.Editora,
+                    l.Autor,
+                    l.Status
+                });
+
+                return Ok(resultado);
+
+            } catch (ApplicationException e) {
+
+                return BadRequest(e.Message);
+            }
+
         }
 
-        [HttpGet]
-        public IActionResult BuscarPorId() {
+        [HttpGet("{id}")]
+        public IActionResult BuscarPorId(Guid id) {
 
+            try {
 
-            return Ok();
+                var livro = _livroService.ListarPorId(id);
+
+                if (livro == null)
+                    return NotFound("Livro não encontrado.");
+
+                return Ok(livro);
+
+            } catch (ApplicationException e) {
+
+                return BadRequest(e.Message);
+            }
         }
 
-        [HttpDelete]
-        public IActionResult Excluir() {
+        [HttpDelete("{id}")]
+        public IActionResult Excluir(Guid id) {
 
+            try {
 
-            return Ok();
+                _livroService.Deletar(id);
+
+                return Ok();
+
+            } catch (ApplicationException e) {
+
+                return BadRequest(e.Message);
+            }
         }
 
     }

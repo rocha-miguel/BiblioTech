@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Itens de Solução/">
+    <File Path="docker-compose.yml" />
+  </Folder>
   <Project Path="BiblioTech.API/BiblioTech.API.csproj" />
   <Project Path="BiblioTech.Domain/BiblioTech.Domain.csproj" />
   <Project Path="BiblioTech.Infra.Data/BiblioTech.Infra.Data.csproj" />

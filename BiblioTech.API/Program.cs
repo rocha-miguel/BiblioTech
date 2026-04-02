@@ -1,3 +1,5 @@
+using BiblioTech.API.Services;
+using BiblioTech.Infra.Data.Repositories;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,9 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<LivroRepository>();
+builder.Services.AddScoped<LivroService>();
 
 var app = builder.Build();
 
