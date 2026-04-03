@@ -87,7 +87,10 @@ namespace BiblioTech.Infra.Data.Repositories {
             using (var connection = new NpgsqlConnection(_connectionString)) {
 
                 var query = """
-                        SELECT * FROM livros
+                        SELECT id, nome, editora, autor, quantidade, quantidade_paginas as quantidadepaginas, 
+                        ano_edicao as anoedicao, tipo_livro as tipolivro, genero_livro as generolivro,
+                        status, data_hora_cadastro as datahoracadastro
+                        FROM livros
                         WHERE id = @id
                     """;
 
