@@ -34,8 +34,7 @@ namespace BiblioTech.API.Models {
         [Required(ErrorMessage = "Por favor, informe o gênero do livro.")]
         public GeneroLivro GeneroLivro { get; set; }
 
-        [Required(ErrorMessage = "Por favor, informe o status do livro.")]
-        public Status Status { get; set; }
+ 
 
 
     }

@@ -14,6 +14,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<LivroRepository>();
 builder.Services.AddScoped<LivroService>();
 
+builder.Services.AddCors(options => {
+    options.AddPolicy("AngularApp", policy => {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment()) {
@@ -24,6 +32,8 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapScalarApiReference(s => s.WithTheme(ScalarTheme.DeepSpace));
+
+app.UseCors("AngularApp");
 
 app.UseAuthorization();
 

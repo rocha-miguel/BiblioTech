@@ -22,7 +22,7 @@ namespace BiblioTech.API.Controllers {
 
                 _livroService.CriarLivro(dadosLivroRequest);
 
-                return Ok();
+                return Ok("Livro cadastrado com sucesso!");
 
             } catch (ApplicationException e) {
 
@@ -38,7 +38,7 @@ namespace BiblioTech.API.Controllers {
 
                 _livroService.AtualizarLivro(id, dadosLivroRequest);
 
-                return Ok();
+                return Ok("Livro atualizado com sucesso!");
 
             } catch (ApplicationException e) {
 
@@ -95,7 +95,7 @@ namespace BiblioTech.API.Controllers {
 
                 _livroService.Deletar(id);
 
-                return Ok();
+                return Ok("Livro excluído com sucesso!");
 
             } catch (ApplicationException e) {
 

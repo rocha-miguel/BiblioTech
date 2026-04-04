@@ -17,4 +17,10 @@
     <ProjectReference Include="..\BiblioTech.Infra.Data\BiblioTech.Infra.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="BiblioTech.API">
+      <HintPath>bin\Debug\net10.0\BiblioTech.API.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

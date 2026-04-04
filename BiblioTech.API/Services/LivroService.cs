@@ -1,5 +1,6 @@
 ﻿using BiblioTech.API.Models;
 using BiblioTech.Domain.Entities;
+using BiblioTech.Domain.Enums;
 using BiblioTech.Infra.Data.Repositories;
 
 namespace BiblioTech.API.Services {
@@ -23,7 +24,7 @@ namespace BiblioTech.API.Services {
                 AnoEdicao = request.AnoEdicao,
                 TipoLivro = request.TipoLivro,
                 GeneroLivro = request.GeneroLivro,
-                Status = request.Status,
+                Status = Status.Disponivel,
             };
 
             _livroRepository.Inserir(livro);
@@ -42,7 +43,7 @@ namespace BiblioTech.API.Services {
                 AnoEdicao = request.AnoEdicao,
                 TipoLivro = request.TipoLivro,
                 GeneroLivro = request.GeneroLivro,
-                Status = request.Status,
+                Status = Status.Disponivel,
             };
 
             _livroRepository.Atualizar(livro);
