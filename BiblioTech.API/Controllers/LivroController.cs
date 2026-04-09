@@ -95,11 +95,11 @@ namespace BiblioTech.API.Controllers {
 
                 _livroService.Deletar(id);
 
-                return Ok("Livro excluído com sucesso!");
+                return Ok(new { mensagem = "Livro excluído com sucesso." });
 
             } catch (ApplicationException e) {
 
-                return BadRequest(e.Message);
+                return BadRequest(new { mensagem = e.Message });
             }
         }
 
